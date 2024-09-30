@@ -23,21 +23,24 @@ function Details({ allData, setAllData }) {
     e.preventDefault()
 
     let addComment = {
-      imagenid: detailsId,
+    //id: ,// penso que temos de mudar isto
       autor: commentNameValue,
       contenido: commentDescriptionValue,
-      rating: commentRatingValue
+      rating: commentRatingValue,
+      imagenId: detailsId
     }
 
     try {
 
       const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/comentarios`, addComment)
 
-      addNewComment(response.data)
 
       setCommentNameValue('')
       setCommentDescriptionValue('')
       setCommentRatingValue('')
+       getDataComment()
+
+
 
     } catch (error) {
       console.log(error)
@@ -65,19 +68,16 @@ function Details({ allData, setAllData }) {
   }
 
 
-  const imgInformation = allData.find((eachElement) => eachElement.imagenid === detailsId)
-  const commentInformation = comment.find((eachElement) => eachElement.imagenid === detailsId)
+  const imgInformation = allData.find((eachElement) => eachElement.id === detailsId)
+ 
 
-  const addNewComment = (addComment) => {
-    setComment((previousComments) => [addComment, ...previousComments])
-  }
+  
   
   const handleDelete = async (commentId) => {
     try {
    await axios.delete(`${import.meta.env.VITE_SERVER_URL}/comentarios/${commentId}`)
 
-    const updateDelete = comment.filter((eachComment) => eachComment.imagenid !== commentId)
-    setComment(updateDelete)
+    getDataComment()
     } catch (error) {
       console.log(error)
     }
@@ -89,25 +89,24 @@ function Details({ allData, setAllData }) {
     <Navbar/>
       <div className='detailsImg'>
         <p>Details Page</p>
-        <img src={imgInformation.img} alt={`imagen ${imgInformation.imagenid}`} style={{ width: '200px', borderRadius: '20px'}} />
+        <img src={imgInformation.img} alt={`imagen ${imgInformation.id}`} style={{ width: '200px', borderRadius: '20px'}} />
         <p>Categoria:{imgInformation.categoria}</p>
         <p>Location: {imgInformation.location}</p>
       </div>
 
 
       <div>
-        <h2>Comments:</h2>
-        <p>Autor: {commentInformation.autor}</p>
-        <p>Rating: {commentInformation.rating}</p>
-        <p>Contenido: {commentInformation.contenido}</p>
-        {commentInformation?.length > 0 ? (
-          commentInformation.map((eachComment, index) => (
+       
+        {comment?.length > 0 ? (
+          comment.map((eachComment) => (
+            imgInformation.id === eachComment.imagenId && (
             <div key={eachComment.id}>
               <p><b>Author:</b>{eachComment.autor}</p>
               <p><b>Content:</b>{eachComment.contenido}</p>
               <p><b>Rating:</b>{eachComment.rating}</p>
-              <button onClick={() => handleDelete({index})}>Delete Comment</button>
+              <button onClick={() => handleDelete(eachComment.id)}>Delete Comment</button>
             </div>
+            )
           ))
         ) : (
           <p>Add new comment</p>

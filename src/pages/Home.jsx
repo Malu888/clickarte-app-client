@@ -17,7 +17,7 @@ function Home({allData, setAllData}) {
                         return (
                             <div key={i}>
                                 <p>Hola</p>
-                                <Link to={`details/${eachElement.imagenid}`}>
+                                <Link to={`details/${eachElement.id}`}>
                                 <img src={eachElement.img} alt={`imagen ${i}`} style={{ width: '150px'}} />
                                 </Link>
                             </div>
