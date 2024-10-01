@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar'
 
 
 
+
 function Details({ allData, setAllData }) {
   const [comment, setComment] = useState(null)
   const [commentNameValue, setCommentNameValue] = useState('')
@@ -83,15 +84,24 @@ function Details({ allData, setAllData }) {
     }
   }
 
+  if (!imgInformation) {
+    return <p>Loading...</p>
+  }
+  
+
 
   return (
     <>
     <Navbar/>
+
       <div className='detailsImg'>
         <p>Details Page</p>
         <img src={imgInformation.img} alt={`imagen ${imgInformation.id}`} style={{ width: '200px', borderRadius: '20px'}} />
         <p>Categoria:{imgInformation.categoria}</p>
         <p>Location: {imgInformation.location}</p>
+        <Link to={`/details/edit/${detailsId}`}>
+        <button >Edit image</button>
+        </Link>
       </div>
 
 
