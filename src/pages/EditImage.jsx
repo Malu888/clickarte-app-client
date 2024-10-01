@@ -4,7 +4,7 @@ import axios from "axios"
 import { useParams } from 'react-router-dom'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import Details from './Details'
+
 
 
 function EditImage({allData, setAllData}) {
@@ -41,8 +41,8 @@ console.log(params)
 
     try {
      await axios.put(`${import.meta.env.VITE_SERVER_URL}/imagenes/${params.imageId}`, updateImg)
-
-     navigate(`/details/${params.imageId}`)
+     window.location.href = '/'
+     
        
     } catch (error) {
         console.log(error)
@@ -58,7 +58,7 @@ setImage(e.target.value)
    
      axios.delete(`${import.meta.env.VITE_SERVER_URL}/imagenes/${params.imageId}`)
         .then(() => {
-            navigate(`/`)
+            window.location.href = '/'
         })
     .catch ((error) => {
         console.log(error)
@@ -70,7 +70,6 @@ setImage(e.target.value)
 
   return (
     <>
-    
     <Navbar />
             <div>Edit Image</div>
             <form onSubmit={handleSubmit}>
@@ -106,6 +105,7 @@ setImage(e.target.value)
           <p>Are you sure you want to delete this image?</p>
           <button onClick={deleteImage}>Si</button>
           <button onClick={() => setIsShowingDeleteCheck(false)}>No</button>
+         
         </div>
       )}
     </>

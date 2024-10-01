@@ -29,6 +29,8 @@ function AddImage() {
 
     try {
       await axios.post(`${import.meta.env.VITE_SERVER_URL}/imagenes`, addImage);
+      alert('Image add')
+      window.location.href = '/'
     } catch (error) {
       console.log(error);
     }
@@ -41,7 +43,7 @@ function AddImage() {
       </div>
       <div>Add a new Image</div>
       <div>
-        <form onSubmit={handleImageSubmit}>
+        <form className="addImageForm" onSubmit={handleImageSubmit}>
           <label>Title:</label>
           <input
             type="text"

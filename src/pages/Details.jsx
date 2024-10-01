@@ -1,148 +1,169 @@
-
-import { Link, useParams } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
-import Navbar from '../components/Navbar'
-
+import { Link, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Navbar from "../components/Navbar";
 
 
+function Details({ allData, setAllData}) {
+  const [comment, setComment] = useState(null);
+  const [commentNameValue, setCommentNameValue] = useState("");
+  const [commentDescriptionValue, setCommentDescriptionValue] = useState("");
+  const [commentRatingValue, setCommentRatingValue] = useState("");
+  const { detailsId } = useParams();
+  
 
-
-function Details({ allData, setAllData }) {
-  const [comment, setComment] = useState(null)
-  const [commentNameValue, setCommentNameValue] = useState('')
-  const [commentDescriptionValue, setCommentDescriptionValue] = useState('')
-  const [commentRatingValue, setCommentRatingValue] = useState('')
-  const { detailsId } = useParams()
-  console.log(`MALUUUUU`, detailsId)
-
-  const handleNameValue = (e) => setCommentNameValue(e.target.value)
-  const handleDescriptionValue = (e) => setCommentDescriptionValue(e.target.value)
-  const handleRatingValue = (e) => setCommentRatingValue(e.target.value)
+  const handleNameValue = (e) => setCommentNameValue(e.target.value);
+  const handleDescriptionValue = (e) =>
+    setCommentDescriptionValue(e.target.value);
+  const handleRatingValue = (e) => setCommentRatingValue(e.target.value);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    let addComment = {
-    //id: ,// penso que temos de mudar isto
+    let addComment = {     
       autor: commentNameValue,
       contenido: commentDescriptionValue,
       rating: commentRatingValue,
-      imagenId: detailsId
-    }
+      imagenId: detailsId,
+    };
 
     try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_SERVER_URL}/comentarios`,
+        addComment
+      );
 
-      const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/comentarios`, addComment)
-
-
-      setCommentNameValue('')
-      setCommentDescriptionValue('')
-      setCommentRatingValue('')
-       getDataComment()
-
-
-
+      setCommentNameValue("");
+      setCommentDescriptionValue("");
+      setCommentRatingValue("");
+      getDataComment();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
-
+  };
 
   useEffect(() => {
-    getDataComment()
-  }, [detailsId])
+    getDataComment();
+  }, [detailsId]);
 
   const getDataComment = async () => {
-
     try {
-      const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/comentarios`);
-      console.log(`O QUE SE PASSA?`,response.data)
-      setComment(response.data)
+      const response = await axios.get(
+        `${import.meta.env.VITE_SERVER_URL}/comentarios`
+      );
+      console.log(`O QUE SE PASSA?`, response.data);
+      setComment(response.data);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   if (comment === null) {
-    return <p>Loading...</p>
+    return <p>Loading...</p>;
   }
 
+  const imgInformation = allData.find(
+    (eachElement) => eachElement.id === detailsId
+  );
 
-  const imgInformation = allData.find((eachElement) => eachElement.id === detailsId)
- 
-
-  
-  
   const handleDelete = async (commentId) => {
     try {
-   await axios.delete(`${import.meta.env.VITE_SERVER_URL}/comentarios/${commentId}`)
+      await axios.delete(
+        `${import.meta.env.VITE_SERVER_URL}/comentarios/${commentId}`
+      );
 
-    getDataComment()
+      getDataComment();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   if (!imgInformation) {
-    return <p>Loading...</p>
+    return <p>Loading...</p>;
   }
-  
-
 
   return (
     <>
-    <Navbar/>
+      <Navbar />
 
-      <div className='detailsImg'>
+      <div className="detailsImg">
         <p>Details Page</p>
-        <img src={imgInformation.img} alt={`imagen ${imgInformation.id}`} style={{ width: '200px', borderRadius: '20px'}} />
+        <img
+          src={imgInformation.img}
+          alt={`imagen ${imgInformation.id}`}
+          style={{ width: "200px", borderRadius: "20px" }}
+        />
         <p>Categoria:{imgInformation.categoria}</p>
         <p>Location: {imgInformation.location}</p>
         <Link to={`/details/edit/${detailsId}`}>
-        <button >Edit image</button>
+          <button>Edit image</button>
         </Link>
       </div>
 
-
       <div>
-       
         {comment?.length > 0 ? (
-          comment.map((eachComment) => (
-            imgInformation.id === eachComment.imagenId && (
-            <div key={eachComment.id}>
-              <p><b>Author:</b>{eachComment.autor}</p>
-              <p><b>Content:</b>{eachComment.contenido}</p>
-              <p><b>Rating:</b>{eachComment.rating}</p>
-              <button onClick={() => handleDelete(eachComment.id)}>Delete Comment</button>
-            </div>
-            )
-          ))
+          comment.map(
+            (eachComment) =>
+              imgInformation.id === eachComment.imagenId && (
+                <div key={eachComment.id}>
+                  <p>
+                    <b>Author:</b>
+                    {eachComment.autor}
+                  </p>
+                  <p>
+                    <b>Content:</b>
+                    {eachComment.contenido}
+                  </p>
+                  <p>
+                    <b>Rating:</b>
+                    {eachComment.rating}
+                  </p>
+                  <button onClick={() => handleDelete(eachComment.id)}>
+                    Delete Comment
+                  </button>
+                </div>
+              )
+          )
         ) : (
           <p>Add new comment</p>
         )}
 
+        <div className="addComment">
+          <form onSubmit={handleSubmit}>
+            <label>Name:</label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={commentNameValue}
+              onChange={handleNameValue}
+            ></input>
+            <label>Description:</label>
+            <input
+              type="text"
+              description="description"
+              placeholder="Comment here"
+              value={commentDescriptionValue}
+              onChange={handleDescriptionValue}
+            ></input>
+            <label>Rating:</label>
+            <input
+              type="number"
+              rating="rating"
+              placeholder="0"
+              value={commentRatingValue}
+              onChange={handleRatingValue}
+              min={1}
+              max={5}
+            ></input>
 
-         <div className='addComment'>
-        <form onSubmit={handleSubmit}>
-          <label>Name:</label>
-          <input type='text' name='name' placeholder='Name' value={commentNameValue} onChange={handleNameValue}></input>
-          <label>Description:</label>
-          <input type='text' description='description' placeholder='Comment here' value={commentDescriptionValue} onChange={handleDescriptionValue}></input>
-          <label>Rating:</label>
-          <input type='number' rating='rating' placeholder='0' value={commentRatingValue} onChange={handleRatingValue} min={1} max={5}></input>
-
-          <button type="submit">Send</button>
-        </form>
+            <button type="submit">Send</button>
+          </form>
         </div>
-        <Link to={'/'}>Back</Link>
+        <Link to={"/"}>Back</Link>
       </div>
-
-
-
-
     </>
-  )
+  );
 }
 
-export default Details
+export default Details;

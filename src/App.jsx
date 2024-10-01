@@ -8,9 +8,13 @@ import NotFound from './pages/NotFound.jsx'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import EditImage from './pages/EditImage.jsx'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { Navbar } from 'react-bootstrap'
+
 
 function App() {
   const [allData, setAllData] = useState(null)
+  const [search, setSearch] = useState('')
 
 
   useEffect(() => {
@@ -36,7 +40,7 @@ function App() {
   return (
     <div className='App'>
       <Routes>
-        <Route path="/" element={<Home allData={allData} setAllData={setAllData} />} />
+        <Route path="/" element={<Home allData={allData} setAllData={setAllData} search={search} setSearch={setSearch}/>} />
         <Route path="/about" element={<About />} />
         <Route path="/details/:detailsId" element={<Details allData={allData} setAllData={setAllData} />} />
         <Route path="/details/edit/:imageId" element={<EditImage allData={allData} setAllData={setAllData}/>} />
