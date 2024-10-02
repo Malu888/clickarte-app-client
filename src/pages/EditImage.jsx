@@ -9,13 +9,14 @@ import { useNavigate } from 'react-router-dom'
 
 function EditImage({allData, setAllData}) {
 const params = useParams()
-console.log(params)
+//console.log(params)
    
 
     const navigate = useNavigate()
 
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
+  const [categoria, setCategoria] = useState('');
   const [isShowingDeleteCheck, setIsShowingDeleteCheck] = useState(false)
 
   useEffect(() => {
@@ -25,6 +26,7 @@ console.log(params)
      console.log(response)
      setDescription(response.data.description)
      setImage(response.data.img)
+     setCategoria(response.data.categoria)
     })
     .catch((error) => {
         console.log(error)
@@ -36,7 +38,8 @@ console.log(params)
 
     let updateImg = {
         description: description,
-        img: image
+        img: image,
+        categoria: categoria
     }
 
     try {
@@ -50,8 +53,28 @@ console.log(params)
   }
 
   const handleNewImage = (e) => {
-setImage(e.target.value)
+    e.preventDefault()
+setImage(e.target.value) // + values?
   }
+
+  const handleCategoriaValue = (e) => {
+    e.preventDefault()
+    setCategoria(e.target.value)
+  }
+
+  /*function handleSubmit(e){
+    e.preventDefault()
+
+    setFilteredData(allData.filter((item) => {
+      return (
+        item.categoria &&
+        item.categoria.toLowerCase().includes(search.toLowerCase())
+      );
+    }))
+
+    setSearch('')
+
+  } */
 
 
   const deleteImage = () => {
@@ -90,11 +113,22 @@ setImage(e.target.value)
                         onChange={handleNewImage}
                     />
                 </div>
+
+                <div>
+                    <label>Category:</label>
+                    <input
+                        type="text"
+                        id="categoria"
+                        placeholder='Add a Category'
+                        onChange={handleCategoriaValue}
+                    />
+                </div>
                
                     <div>
                         <h3>Preview:</h3>
                         <img src={image} alt={description} style={{ width: '200px', height: 'auto' }} />
                     </div>
+                    
             
                 <button type="submit">Update Image</button>
             </form>

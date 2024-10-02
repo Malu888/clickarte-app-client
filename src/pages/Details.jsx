@@ -9,6 +9,7 @@ function Details({ allData, setAllData}) {
   const [commentNameValue, setCommentNameValue] = useState("");
   const [commentDescriptionValue, setCommentDescriptionValue] = useState("");
   const [commentRatingValue, setCommentRatingValue] = useState("");
+  
   const { detailsId } = useParams();
   
 

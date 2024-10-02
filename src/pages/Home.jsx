@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { Carousel } from "react-bootstrap";
@@ -6,15 +6,19 @@ import img1 from "../assets/zebra.jpg";
 import img2 from "../assets/black-white-palm.jpg";
 
 function Home({ allData, setAllData, search, setSearch }) {
-  const filteredData = allData.filter((item) => {
+
+  const [filteredData, setFilteredData] = useState(allData.filter((item) => {
     return (
       item.categoria &&
       item.categoria.toLowerCase().includes(search.toLowerCase())
     );
-  });
+  }))
+
+
+  
   return (
     <>
-      <Navbar search={search} setSearch={setSearch} />
+      <Navbar search={search} setSearch={setSearch} allData={allData} setFilteredData={setFilteredData}/>
       <Link to="/addimage/:addimageId">
         <button className="addImage">Add your image</button>
       </Link>
@@ -39,7 +43,7 @@ function Home({ allData, setAllData, search, setSearch }) {
             <img
               className="d-block w-100"
               src="https://img.freepik.com/free-photo/beautiful-shot-foggy-mountains-forest_181624-229.jpg?t=st=1727789808~exp=1727793408~hmac=a152bff1b4994589c62f602b6122ed46b763f3a4cbe0a22af2d18a4ac9c5b848&w=1380"
-              alt="Terceira Imagem"
+              alt="Quarta Imagem"
             />
           </Carousel.Item>
         </Carousel>
