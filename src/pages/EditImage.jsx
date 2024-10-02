@@ -1,19 +1,15 @@
-import Navbar from '../components/Navbar'
+import logo1 from "../assets/logo.png";
 import { useState, useEffect } from 'react'
 import axios from "axios"
 import { useParams } from 'react-router-dom'
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 
-
-function EditImage({allData, setAllData}) {
+function EditImage() {
 const params = useParams()
-//console.log(params)
-   
 
-    const navigate = useNavigate()
-
+  
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [categoria, setCategoria] = useState('');
@@ -24,9 +20,9 @@ const params = useParams()
     .get(`${import.meta.env.VITE_SERVER_URL}/imagenes/${params.imageId}`)
     .then((response) => {
      console.log(response)
-     setDescription(response.data.description)
-     setImage(response.data.img)
-     setCategoria(response.data.categoria)
+     setDescription(response.data.description || '')
+     setImage(response.data.img || '')
+     setCategoria(response.data.categoria || '')
     })
     .catch((error) => {
         console.log(error)
@@ -62,20 +58,6 @@ setImage(e.target.value) // + values?
     setCategoria(e.target.value)
   }
 
-  /*function handleSubmit(e){
-    e.preventDefault()
-
-    setFilteredData(allData.filter((item) => {
-      return (
-        item.categoria &&
-        item.categoria.toLowerCase().includes(search.toLowerCase())
-      );
-    }))
-
-    setSearch('')
-
-  } */
-
 
   const deleteImage = () => {
    
@@ -93,10 +75,12 @@ setImage(e.target.value) // + values?
 
   return (
     <>
-    <Navbar className=""/>
-            <div>Edit Image</div>
+     <Link to='/'>
+        <img className='logoClickArte' src={logo1}></img>
+        </Link>
+            <div className="edicontainer">Edit Image</div>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="edigroup">
                     <label htmlFor="description">Description:</label>
                     <input
                         type="text"
@@ -105,7 +89,7 @@ setImage(e.target.value) // + values?
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </div>
-                <div>
+                <div className="edigroup">
                     <label>Image:</label>
                     <input
                         type="text"
@@ -114,7 +98,7 @@ setImage(e.target.value) // + values?
                     />
                 </div>
 
-                <div>
+                <div className="edigruop">
                     <label>Category:</label>
                     <input
                         type="text"
@@ -124,7 +108,7 @@ setImage(e.target.value) // + values?
                     />
                 </div>
                
-                    <div>
+                    <div className="edipreview">
                         <h3>Preview:</h3>
                         <img src={image} alt={description} style={{ width: '200px', height: 'auto' }} />
                     </div>

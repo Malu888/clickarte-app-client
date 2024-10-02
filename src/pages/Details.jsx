@@ -3,8 +3,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import { RingLoader } from "react-spinners";
+import { useContext } from "react";
+import { DataContext } from "../context/Data.context.jsx"
 
-function Details({ allData, setAllData }) {
+
+function Details() {
+  const { allData } = useContext(DataContext)
   const [comment, setComment] = useState(null);
   const [commentNameValue, setCommentNameValue] = useState("");
   const [commentDescriptionValue, setCommentDescriptionValue] = useState("");

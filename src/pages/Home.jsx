@@ -2,25 +2,36 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { Carousel } from "react-bootstrap";
-import img1 from "../assets/Image20241002162013.png";
-import img2 from "../assets/black-white-palm.jpg";
-import img3 from "../assets/nature.jpg"
-import img4 from "../assets/mountains.jpg"
+import img1 from "../assets/img00.png";
+import img2 from "../assets/img01.png";
+import img3 from "../assets/img02.png";
+import img4 from "../assets/img03.png";
+import { useContext } from "react";
+import { DataContext } from "../context/Data.context.jsx";
+import { RingLoader } from "react-spinners";
 
-function Home({ allData, setAllData, search, setSearch }) {
 
-  const [filteredData, setFilteredData] = useState(allData.filter((item) => {
+function Home({ filteredData}) {
+
+  const { allData } = useContext(DataContext)
+
+  if (allData === null) {
     return (
-      item.categoria &&
-      item.categoria.toLowerCase().includes(search.toLowerCase())
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+      >
+        <RingLoader color="#5D7CF5" />
+      </div>
     );
-  }))
+  }
 
 
+
+ 
 
   return (
     <>
-      <Navbar search={search} setSearch={setSearch} allData={allData} setFilteredData={setFilteredData}/>
+      <Navbar/>
       <Link to="/addimage/:addimageId">
         <button className="addImage">Add your image</button>
       </Link>
@@ -51,8 +62,8 @@ function Home({ allData, setAllData, search, setSearch }) {
         </Carousel>
       </div>
       <div>
-        {filteredData.length > 0 ? (
-          filteredData.map((eachElement, i) => (
+        {allData.length > 0 ? (
+          allData.map((eachElement, i) => (
             <div key={i} className="pictures">
               <Link to={`details/${eachElement.id}`}>
                 <img
@@ -68,6 +79,7 @@ function Home({ allData, setAllData, search, setSearch }) {
         )}
       </div>
     </>
+   
   );
 }
 

@@ -5,55 +5,33 @@ import About from './pages/About.jsx'
 import Details from "./pages/Details.jsx"
 import AddImage from './pages/AddImage.jsx'
 import NotFound from './pages/NotFound.jsx'
-import { useState, useEffect } from 'react'
-import axios from 'axios'
 import EditImage from './pages/EditImage.jsx'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import { Navbar } from 'react-bootstrap'
-import { RingLoader } from "react-spinners";
+import { DataWrapper } from './context/Data.context.jsx'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+
+
+
 
 function App() {
-  const [allData, setAllData] = useState(null)
-  const [search, setSearch] = useState('')
 
-
-  useEffect(() => {
-    getData()
-  }, [])
-
-  const getData = async () => {
-
-    try {
-      const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/imagenes`);
-      console.log(response)
-      setAllData(response.data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-
-  if (allData === null) {
-    return (
-      <div
-        style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
-      >
-        <RingLoader color="#5D7CF5" />
-      </div>
-    );
-  }
-
+  
   return (
+    
     <div className='App'>
+      <DataWrapper>
       <Routes>
-        <Route path="/" element={<Home allData={allData} setAllData={setAllData} search={search} setSearch={setSearch}/>} />
+        <Route path="/" element={<Home/>} />
         <Route path="/about" element={<About />} />
-        <Route path="/details/:detailsId" element={<Details allData={allData} setAllData={setAllData} />} />
-        <Route path="/details/edit/:imageId" element={<EditImage allData={allData} setAllData={setAllData}/>} />
+        <Route path="/details/:detailsId" element={<Details/>} />
+        <Route path="/details/edit/:imageId" element={<EditImage />} />
         <Route path="/addimage/:addimageId" element={<AddImage/>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      </DataWrapper>
     </div>
+    
   )
 }
 export default App

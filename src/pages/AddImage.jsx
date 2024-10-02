@@ -44,11 +44,12 @@ function AddImage() {
       <div>
         <Navbar />
       </div>
-      <div>Add a new Image</div>
-      <div>
+      <div className="newImage">Add a new Image</div>
+      <div className="form">
         <form className="addImageForm" onSubmit={handleImageSubmit}>
           <label>Title:</label>
           <input
+          className="addformInput"
             type="text"
             title="title"
             placeholder="Add Title"
@@ -57,20 +58,25 @@ function AddImage() {
           ></input>
           <label>Description:</label>
           <input
+           className="addformInput"
             type="text"
             description="description"
             placeholder="Add description"
             value={description}
             onChange={handleDescriptionValue}
           ></input>
+         
           <label>Image:</label>
-          <input type="text" onChange={handleImageValue}></input>
+          <input  className="addformInput" type="text" onChange={handleImageValue}></input>
+          
           <label>Category:</label>
-          <input type="text" onChange={handleCategoriaValue} placeholder="Add Categoria"></input>
-          <button type="submit">Send</button>
+          <input  className="addformInput" type="text" onChange={handleCategoriaValue} placeholder="Add Categoria"></input>
+          <button className="buttonSend" type="submit">Send</button>
         </form>
       </div>
-      <Link to={"/"}>Back</Link>
+      
+      <Link className="addBack" to={"/"}>Back</Link>
+      
     </>
   );
 }
