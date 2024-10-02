@@ -40,12 +40,12 @@ function AddImage() {
   };
 
   return (
-    <>
+    <div className="divForm">
       <div>
         <Navbar />
       </div>
-      <div className="newImage">Add a new Image</div>
       <div className="form">
+      <h1>Add a new Image</h1>
         <form className="addImageForm" onSubmit={handleImageSubmit}>
           <label>Title:</label>
           <input
@@ -75,9 +75,8 @@ function AddImage() {
         </form>
       </div>
       
-      <Link className="addBack" to={"/"}>Back</Link>
-      
-    </>
+      {/*<Link className="addBack" to={"/"}>Back</Link>*/}
+      </div>
   );
 }
 

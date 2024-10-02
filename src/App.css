@@ -2,6 +2,7 @@
 
 #root {
   max-width: 1280px;
+  max-height: 100%;
   margin: 0 auto;
   text-align: center;
   background-color: rgb(241, 240, 240);
@@ -11,7 +12,7 @@
 
 /*EditarImagenFormulario*/
 
-.edicontainer{
+/*.edicontainer{
 
   width: 150px;
   margin: 0 auto;
@@ -20,7 +21,7 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
-}
+}*/
 
 .edigroup{
   margin-bottom: 15px;
@@ -42,8 +43,6 @@ body {
   margin: 0;
   text-align: center;
   max-width: 1280px;
-  background-color: rgb(171, 30, 30);
- 
 }
 
 .navBar {
@@ -54,7 +53,7 @@ body {
   margin-top: 0;
   width: 100%;
   position: relative;
-  background-color: rgb(241, 240, 240);
+  
  
 }
 
@@ -148,7 +147,8 @@ body {
 
 .addImage {
 margin-bottom: 20px;
-font-size: 10px;
+padding: 5px;
+font-size: 12px;
 display: flex;
 justify-content: center;
 margin: auto;
@@ -158,6 +158,9 @@ width: 80%;
   box-shadow: 0px 10px 15px #5D7CF5;
   border: #5D7CF5;
   background-color: rgb(129, 127, 127);
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  color:#ddd;
+ text-shadow: 0 0 10px #5D7CF5;
 }
 
 .pictures {
@@ -181,9 +184,92 @@ width: 80%;
  border-radius: 20px;
  margin: auto;
  padding: 6px;
- 
 }
 
+.divForm {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  border: 5px solid white;
+  z-index: 1;
+}
+
+.divForm::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(https://img.freepik.com/fotos-gratis/paisagem-de-palmeiras-pretas-e-brancas_23-2151601974.jpg?t=st=1727900602~exp=1727904202~hmac=0a814ca0bbe4be488ab633c978b80ef87984e37daa6e7ce7a4d429269ce52fc6&w=996);
+  background-size: cover;
+  background-position: center; 
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  z-index: -1; 
+  border: 3px solid white;
+}
+
+.form {
+margin: auto;
+display: flex;
+flex-direction: column;
+
+}
+
+.addImageForm {
+  width: 80%;
+  margin: auto;
+}
+
+.addformInput {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 5px;
+  background-color: #ddd;
+  box-shadow: 0px 10px 20px rgb(129, 127, 127);;
+  border-radius: 10px;
+  border: 2px solid white;
+ margin-bottom: 20px;
+ color: #00438f;
+}
+
+.form h1 {
+  margin-bottom: 20px;
+  text-transform: none;
+  color: #00438f;
+  font-weight: lighter;
+  font-style: italic;
+  text-shadow: 0 0 10px rgba(49, 92, 184, 0.6), 0 0 20px rgba(0, 71, 255, 0.4);
+  font-size: 30px;
+}
+
+.form label {
+  color: #00438f;
+  font-weight: lighter;
+  font-style: italic;
+  text-shadow: 1px 3px 10px  #5D7CF5;
+  font-size: 20px;
+}
+
+.buttonSend {
+  background: linear-gradient(90deg, #00f6ff, #0047ff); 
+  border: none; 
+  border-radius: 10px; 
+  color: white;
+  padding:5px 50px; 
+  font-size: 18px;
+  font-family: 'Arial', sans-serif;
+  cursor: pointer;
+  text-transform: uppercase; 
+  letter-spacing: 2px;
+  box-shadow: 0 0 10px rgba(0, 246, 255, 0.6), 0 0 20px rgba(0, 71, 255, 0.4);
+  transition: 0.4s ease-in-out; 
+  position: relative; 
+  overflow: hidden;
+  margin-top: 40px;
+}
 
 
 /*Design tablet*/
