@@ -10,7 +10,7 @@ import axios from 'axios'
 import EditImage from './pages/EditImage.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Navbar } from 'react-bootstrap'
-
+import { RingLoader } from "react-spinners";
 
 function App() {
   const [allData, setAllData] = useState(null)
@@ -34,7 +34,13 @@ function App() {
 
 
   if (allData === null) {
-    return <p>Loading...</p>
+    return (
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+      >
+        <RingLoader color="#5D7CF5" />
+      </div>
+    );
   }
 
   return (

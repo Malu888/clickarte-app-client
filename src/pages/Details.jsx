@@ -2,16 +2,15 @@ import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import { RingLoader } from "react-spinners";
 
-
-function Details({ allData, setAllData}) {
+function Details({ allData, setAllData }) {
   const [comment, setComment] = useState(null);
   const [commentNameValue, setCommentNameValue] = useState("");
   const [commentDescriptionValue, setCommentDescriptionValue] = useState("");
   const [commentRatingValue, setCommentRatingValue] = useState("");
-  
+
   const { detailsId } = useParams();
-  
 
   const handleNameValue = (e) => setCommentNameValue(e.target.value);
   const handleDescriptionValue = (e) =>
@@ -21,7 +20,7 @@ function Details({ allData, setAllData}) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let addComment = {     
+    let addComment = {
       autor: commentNameValue,
       contenido: commentDescriptionValue,
       rating: commentRatingValue,
@@ -52,7 +51,7 @@ function Details({ allData, setAllData}) {
       const response = await axios.get(
         `${import.meta.env.VITE_SERVER_URL}/comentarios`
       );
-      console.log(`O QUE SE PASSA?`, response.data);
+      
       setComment(response.data);
     } catch (error) {
       console.log(error);
@@ -60,7 +59,13 @@ function Details({ allData, setAllData}) {
   };
 
   if (comment === null) {
-    return <p>Loading...</p>;
+    return (
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+      >
+        <RingLoader color="#5D7CF5" />
+      </div>
+    );
   }
 
   const imgInformation = allData.find(
@@ -80,7 +85,13 @@ function Details({ allData, setAllData}) {
   };
 
   if (!imgInformation) {
-    return <p>Loading...</p>;
+    return (
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+      >
+        <RingLoader color="#5D7CF5" />
+      </div>
+    );
   }
 
   return (

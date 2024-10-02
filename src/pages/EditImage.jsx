@@ -93,7 +93,7 @@ setImage(e.target.value) // + values?
 
   return (
     <>
-    <Navbar />
+    <Navbar className=""/>
             <div>Edit Image</div>
             <form onSubmit={handleSubmit}>
                 <div>
