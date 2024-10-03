@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import logo1 from "../assets/logo.png";
 
 
 
@@ -42,7 +43,9 @@ function AddImage() {
   return (
     <div className="divForm">
       <div>
-        <Navbar />
+      <Link to='/'>
+        <img className='logoClickArte' src={logo1}></img>
+        </Link>
       </div>
       <div className="form">
       <h1>Add a new Image</h1>
@@ -67,7 +70,7 @@ function AddImage() {
           ></input>
          
           <label>Image:</label>
-          <input  className="addformInput" type="text" onChange={handleImageValue}></input>
+          <input  className="addformInput" type="text" placeholder='Url' onChange={handleImageValue}></input>
           
           <label>Category:</label>
           <input  className="addformInput" type="text" onChange={handleCategoriaValue} placeholder="Add Categoria"></input>

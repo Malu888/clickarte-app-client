@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { Carousel } from "react-bootstrap";
@@ -11,9 +11,32 @@ import { DataContext } from "../context/Data.context.jsx";
 import { RingLoader } from "react-spinners";
 
 
-function Home({ filteredData}) {
+function Home() {
 
   const { allData } = useContext(DataContext)
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('')
+  const [filteredResults, setFilteredResults] = useState([]);
+ 
+
+
+  useEffect(() => {
+    if (allData) {
+      const uniqueCategories = Array.from(new Set(allData.map(item => item.categoria)));
+      setCategories(uniqueCategories);
+
+      if (selectedCategory) {
+        const filtered = allData.filter(item => item.categoria === selectedCategory);
+        setFilteredResults(filtered);
+      } else {
+        setFilteredResults(allData); 
+    }
+  }
+  }, [allData, selectedCategory]);
+
+  const handleCategorySelected = (category) => {
+    setSelectedCategory(category)
+  }
 
   if (allData === null) {
     return (
@@ -31,8 +54,8 @@ function Home({ filteredData}) {
 
   return (
     <>
-      <Navbar/>
-      <Link to="/addimage/:addimageId">
+      <Navbar categories={categories} onSelectedCategory={handleCategorySelected}/>
+      <Link to="/addimage/:addimageId" style={{textDecoration: 'none'}}>
         <button className="addImage">Add your image</button>
       </Link>
       <div className="carousel">
@@ -62,8 +85,8 @@ function Home({ filteredData}) {
         </Carousel>
       </div>
       <div>
-        {allData.length > 0 ? (
-          allData.map((eachElement, i) => (
+        {filteredResults.length > 0 ? (
+          filteredResults.map((eachElement, i) => (
             <div key={i} className="pictures">
               <Link to={`details/${eachElement.id}`}>
                 <img
@@ -75,11 +98,10 @@ function Home({ filteredData}) {
             </div>
           ))
         ) : (
-          <p>No images found the selected categoty.</p>
+          <p>No images found for the selected category.</p>
         )}
       </div>
     </>
-   
   );
 }
 

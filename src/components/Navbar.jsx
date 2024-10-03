@@ -1,59 +1,60 @@
 import React, { useState } from "react";
 import logo1 from "../assets/logo.png";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { DataContext } from "../context/Data.context.jsx"
+import search from '../assets/icone.png'
 
 
-function Navbar() {
- /* const { allData } = useContext(DataContext)
-  const [selectedCategory, setSelectedCategory] = useState('')
-  const [showDropdown, setShowDropdown] = useState(false)
- 
-  
 
-  //const categories = ['blanco y negro' , "ciudades", "playas"]
+function Navbar({categories, onSelectedCategory}) {
+const [isOpen, setIsOpen] = useState(false)
 
-  const categories = [...new Set(allData.map(item => item.categoria))];
+console.log(categories)
 
-  const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
-    const filtered = allData.filter(item => item.categoria === category);
-    setFilteredData(filtered)
-    setShowDropdown(false)
-  };
+const toggleMenu = () => {
+  setIsOpen(!isOpen);
+};
 
-  const handleDropdownToggle = () => {
-    setShowDropdown(prev => !prev)
-  };*/
+const handleCategoryClick = (category) => {
+  onSelectedCategory(category)
+  setIsOpen(false)
+}
+
 
 
   return (
     <>
-    
+     <nav className="navbar-container">
     <div className="navBar">
       <Link to="/">
         <img className="logoClickArte" src={logo1}></img>
-      </Link>{/* 
-     <div className="dropdown">
-      <button onClick={handleDropdownToggle} className="dropdown-button">
-      {selectedCategory || "Categories"} 
-      </button>
-     </div>
-      {showDropdown && (
-        <div className="categorias-menu">
-          {categories.map((eachCategoria, i) => (
-            <div
-              key={i}
-              className="categoria"
-              onClick={() => handleCategorySelect(eachCategoria)}
-            >
-              {eachCategoria}
-            </div>
+      </Link>
+
+
+      {!isOpen && (
+          <button className={'menu-icon'} onClick={toggleMenu}>
+          <div className="bar">
+            <img src={search}></img>
+          </div>
+        </button>
+        )}
+      
+      {isOpen && (
+        <div className={`nav-menu ${isOpen ? "active" : ""}`}>
+           <div className="scrollable-menu">
+          {categories.map((category, index) => (
+            <button
+            key={index} 
+            className="nav-item"
+            onClick={() => handleCategoryClick(category)}>
+               {category}
+              </button>
+             
           ))}
         </div>
-      )}*/}
-    </div>
+        </div>
+        )}
+      </div>
+    </nav>
     </>
   );
 }

@@ -107,7 +107,6 @@ function Details() {
         <img
           src={imgInformation.img}
           alt={`imagen ${imgInformation.id}`}
-          style={{ width: "200px", borderRadius: "20px" }}
         />
         <p>Categoria:{imgInformation.categoria}</p>
         <p>Location: {imgInformation.location}</p>
