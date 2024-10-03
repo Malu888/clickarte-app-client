@@ -56,6 +56,9 @@ function Home() {
       <Link to="/addimage/:addimageId" style={{textDecoration: 'none'}}>
         <button className="addImage">Add your image</button>
       </Link>
+      <Link to={'/about'} style={{textDecoration: 'none'}}>
+      <button className="addImage">About</button>
+      </Link>
       <div className="carousel">
         <Carousel>
           <Carousel.Item>

@@ -118,8 +118,8 @@ function Details() {
           
         />
         <div className="container-p">
-        <p className="description"><b>Category:</b>{imgInformation.categoria}</p>
-         <p className="description"><b> Location:</b> {imgInformation.location}</p> 
+        <p className="description">{imgInformation.categoria}</p>
+         <p className="description"> {imgInformation.location}</p> 
          </div>      
         <Link to={`/details/edit/${detailsId}`}>
           <button className="butonDeidit">Edit image</button>

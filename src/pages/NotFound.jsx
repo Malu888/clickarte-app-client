@@ -6,12 +6,15 @@ import { Link } from 'react-router-dom'
 function NotFound() {
   return (
     <>
-    <div>
+    <div className='container-notFound'>
+    <div className='logo-notFound-container'>
      <Link to='/'>
-        <img className='logoClickArte' src={logo}></img>
+        <img className='logoClickArte-notFound' src={logo}></img>
         </Link>
         </div>
-    <div>NotFound</div>
+    
+      
+        </div>
     </>
   )
 }

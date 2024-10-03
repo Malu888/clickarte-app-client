@@ -10,17 +10,15 @@ function About() {
     <Link to='/'>
         <img className='logoClickArte' src={logo1}></img>
         </Link>
-    <div className="informationH2">
-    <h2> Member Info:</h2>
-    </div>
-    <div className='iconsMalu'>
-<a href="https://github.com/SLAE021" > <img src={gitHub} style={{width: '40px'}}></img></a>
-<a href="www.linkedin.com/in/samuel-angulo-slae"><img src={linkedin} style={{width: '40px'}}/></a>
+    <div className='iconsSam'>
+      <h2 className='Members'> Samuel Angulo</h2>
+<a href="https://github.com/SLAE021" > <img  className='imgIcons' src={gitHub} ></img></a>
+<a href="www.linkedin.com/in/samuel-angulo-slae"><img  className='imgIcons' src={linkedin} /></a>
 </div>
-<div className="iconsSam">
-
-<a href="https://github.com/Malu888"> <img src={gitHub} style={{width: '40px'}}></img></a>
-<a href="https://www.linkedin.com/in/mal%C3%BA-dietrich-0b3b83292/"><img src={linkedin} style={{width: '40px'}}/></a>
+<div className="iconsMalu">
+<h2 className='Members'> Malu Dietrich</h2>
+<a href="https://github.com/Malu888"> <img className='imgIcons' src={gitHub} ></img></a>
+<a href="https://www.linkedin.com/in/mal%C3%BA-dietrich-0b3b83292/"><img  className='imgIcons' src={linkedin}/></a>
 
     </div>
     </div>
