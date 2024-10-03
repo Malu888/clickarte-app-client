@@ -1,16 +1,11 @@
-
-
 #root {
-
   margin: 0 auto;
   text-align: center;
   background-color: rgb(237, 238, 248);
   width: 100vw;
 }
 
-
 /*Design Mobile*/
-
 
 body {
   padding: 0;
@@ -27,11 +22,9 @@ body {
   margin-top: 0;
   width: 100%;
   position: relative;
-  
- 
 }
 
-.logoClickArte{
+.logoClickArte {
   max-width: 150px;
   height: 110px;
   background: url(./assets/logo\ 1.png);
@@ -44,18 +37,16 @@ body {
 
 @keyframes rotar {
   from {
-    transform:(0deg);
-      }
-      to{
-        transform: rotate(360deg)
-      }
+    transform: (0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .bar {
-  
   border-radius: 50px;
   padding: 10px;
-
 }
 
 .bar img {
@@ -63,12 +54,11 @@ body {
   cursor: pointer;
 }
 
-.menu-icon{
+.menu-icon {
   border: none;
   background: transparent;
   cursor: pointer;
 }
-
 
 .nav-item {
   margin-left: auto;
@@ -77,33 +67,31 @@ body {
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(93, 124, 245, 0.5);
   background-color: rgba(93, 124, 245, 0.1);
-  border: 1px solid #5D7CF5;
+  border: 1px solid #5d7cf5;
   padding-right: 30px;
   padding-left: 10px;
-  color: #5D7CF5;
+  color: #5d7cf5;
   line-height: 1rem;
   transition: background-color 0.3s, color 0.3s;
 }
 
 .nav-item:hover {
-  background-color: #5D7CF5;
-  color: white; 
+  background-color: #5d7cf5;
+  color: white;
 }
 
 .nav-menu {
   display: flex;
-flex-direction: column;
-gap: 10px;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .scrollable-menu {
-  max-height: 200px; 
-  overflow-y: auto; 
-  padding: 5px; 
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 5px;
   border-radius: 10px;
 }
-
-
 
 /*.carousel {
   margin: 20px 10px 20px 10px;
@@ -123,32 +111,30 @@ gap: 10px;
   object-fit: cover;
 }
 
-
-
 .addImage {
-margin-bottom: 20px;
-padding: 5px;
-font-size: 12px;
-display: flex;
-align-items: center;
-justify-content: center;
-margin: auto;
-max-width: 100vh;
-width: 80%;
+  margin-bottom: 20px;
+  padding: 5px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  max-width: 100vh;
+  width: 80%;
   border-radius: 10px;
-  box-shadow: 0px 10px 15px #5D7CF5;
-  border: 2px solid #5D7CF5;
+  box-shadow: 0px 10px 15px #5d7cf5;
+  border: 2px solid #5d7cf5;
   background-color: #7d7d7d;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
-  color:#ddd;
- text-shadow: 0 0 10px #5D7CF5;
- cursor: pointer;
- transition: background-color 0.3s, transform 0.3s;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #ddd;
+  text-shadow: 0 0 10px #5d7cf5;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .addImage:hover {
-  background-color: #5D7CF5;
-  transform: scale(1.05); 
+  background-color: #5d7cf5;
+  transform: scale(1.05);
 }
 
 .pictures {
@@ -156,8 +142,7 @@ width: 80%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
- margin: auto;
- 
+  margin: auto;
 }
 
 .pictures img {
@@ -165,13 +150,13 @@ width: 80%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
- margin: auto;
+  margin: auto;
   max-width: 80%;
   height: auto;
- margin-bottom: 10px;
- border-radius: 20px;
- margin: auto;
- padding: 6px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  margin: auto;
+  padding: 6px;
 }
 
 .divForm {
@@ -182,8 +167,8 @@ width: 80%;
   z-index: 1;
 }
 
-.divForm::before{
-  content: '';
+.divForm::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -191,28 +176,26 @@ width: 80%;
   height: 100%;
   background: url(./assets/background.jpg);
   background-size: cover;
-  background-position: center; 
+  background-position: center;
   background-repeat: no-repeat;
   opacity: 0.5;
-  z-index: -1; 
-  border: 3px solid white;
+  z-index: -1;
+  border: 3px solid whit;
 }
 
 .form {
-margin: auto;
-display: flex;
-flex-direction: column;
-
-
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .addImageForm {
   width: 80%;
   margin: auto;
-display: flex;
-flex-direction: column;
-align-items: center;
-/*margin-bottom: ;*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*margin-bottom: ;*/
 }
 
 .addformInput {
@@ -220,11 +203,11 @@ align-items: center;
   flex-direction: column;
   margin: auto;
   background-color: #ddd;
-  box-shadow: 0px 10px 20px rgb(129, 127, 127);;
+  box-shadow: 0px 10px 20px rgb(129, 127, 127);
   border-radius: 10px;
   border: 2px solid white;
- margin-bottom: 5px;
- color: #00438f
+  margin-bottom: 5px;
+  color: #00438f;
 }
 
 .form h1 {
@@ -242,27 +225,26 @@ align-items: center;
   color: #00438f;
   font-weight: lighter;
   font-style: italic;
-  text-shadow: 1px 3px 10px  #5D7CF5;
+  text-shadow: 1px 3px 10px #5d7cf5;
   font-size: 15px;
 }
 
 .buttonSend {
-  background: linear-gradient(90deg, #00f6ff, #0047ff); 
-  border: none; 
-  border-radius: 10px; 
+  background: linear-gradient(90deg, #00f6ff, #0047ff);
+  border: none;
+  border-radius: 10px;
   color: white;
-  padding:5px 50px; 
+  padding: 5px 50px;
   font-size: 18px;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   cursor: pointer;
-  text-transform: uppercase; 
+  text-transform: uppercase;
   letter-spacing: 2px;
   box-shadow: 0 0 10px rgba(0, 246, 255, 0.6), 0 0 20px rgba(0, 71, 255, 0.4);
-  transition: 0.4s ease-in-out; 
-  position: relative; 
+  transition: 0.4s ease-in-out;
+  position: relative;
   overflow: hidden;
   margin-top: 60px;
-  
 }
 
 .loading {
@@ -277,25 +259,24 @@ align-items: center;
 
 /*Samuel*/
 
-
 /*Detralles iamgenes Samuel trabajando aqui*/
 
 /* Contenedor principal de imágenes y comentarios */
 .detailsImg {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: auto;
-  width: 100%; 
-  max-width: 600px; 
+  width: 100%;
+  max-width: 600px;
   border-radius: 10px;
   background-color: rgb(237, 238, 248);
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .detailsH1 {
@@ -323,8 +304,8 @@ align-items: center;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(93, 124, 245, 0.5);
   background-color: rgba(93, 124, 245, 0.1);
-  border: 1px solid #5D7CF5;
-  color: #5D7CF5;
+  border: 1px solid #5d7cf5;
+  color: #5d7cf5;
   transition: background-color 0.3s, color 0.3s;
   text-align: center;
   margin-top: 10px;
@@ -333,8 +314,8 @@ align-items: center;
 
 /* Estilo para las imágenes dentro de detailsImg */
 .detailsImg img {
-  max-width: 100%; 
-  height: auto;   
+  max-width: 100%;
+  height: auto;
   border-radius: 20px;
 }
 
@@ -349,16 +330,15 @@ align-items: center;
   margin-bottom: 10px;
 }
 
-.comentarios p{
-  border: 1px solid #5D7CF5;
+.comentarios p {
+  border: 1px solid #5d7cf5;
   color: #00438f;
   border-radius: 20px;
-
 }
 
 /* Botón de edición */
 .butonDeidit {
-  width: 150px; 
+  width: 150px;
   margin-top: 10px;
   background: linear-gradient(90deg, #00d2ff, #3a7bd5);
   color: white;
@@ -366,25 +346,23 @@ align-items: center;
   border-radius: 20px;
   cursor: pointer;
   font-size: 16px;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Verdana", sans-serif;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   margin-bottom: 20px;
 }
 
-
-.addcomentarioInput{
-  width: 100%; 
-  max-width: 250px; 
+.addcomentarioInput {
+  width: 100%;
+  max-width: 250px;
   margin: 10px 0;
- padding: 5px;
+  padding: 5px;
   border: 1px solid #ddd;
   border-radius: 15px;
-  box-shadow: 0px 4px 6px  #00438f;
+  box-shadow: 0px 4px 6px #00438f;
   font-size: 14px;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Verdana", sans-serif;
   text-align: center;
 }
-
 
 /* Estilo para las etiquetas */
 label {
@@ -392,12 +370,12 @@ label {
   color: #00438f;
   margin-bottom: 5px;
   font-weight: bold;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Verdana", sans-serif;
 }
 
 /* Botón de envío */
 .buttonEnviar {
-  width: 150px; 
+  width: 150px;
   margin-top: 10px;
   background: linear-gradient(90deg, #00d2ff, #3a7bd5);
   color: white;
@@ -405,9 +383,9 @@ label {
   border-radius: 20px;
   cursor: pointer;
   font-size: 16px;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Verdana", sans-serif;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease-in-out ;
+  transition: background-color 0.3s ease-in-out;
 }
 
 /* Contenedor de comentarios */
@@ -416,7 +394,7 @@ label {
   padding: 30px;
   border-radius: 20px;
   margin-top: 20px;
-  width: 100%; 
+  width: 100%;
   max-width: 300px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -439,11 +417,11 @@ label {
   font-size: 30px;
 }
 /*formulario*/
-.editForm{
+.editForm {
   background-color: rgb(237, 238, 248);
   border-radius: 20px;
   margin-top: 20px;
-  width: 100%; 
+  width: 100%;
   max-width: 300px;
   display: flex;
   flex-direction: column;
@@ -452,16 +430,16 @@ label {
   margin: auto;
   text-align: center;
 }
-.editForm input{
-  width: 100%; 
-  max-width: 250px; 
+.editForm input {
+  width: 100%;
+  max-width: 250px;
   margin: 10px 0;
- padding: 5px;
+  padding: 5px;
   border: 1px solid #ddd;
   border-radius: 15px;
-  box-shadow: 0px 4px 6px  #00438f;
+  box-shadow: 0px 4px 6px #00438f;
   font-size: 14px;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Verdana", sans-serif;
   text-align: center;
 }
 
@@ -480,7 +458,6 @@ label {
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .editpreview h3 {
@@ -495,23 +472,23 @@ label {
 }
 
 .editpreview img {
-  max-width: 90%; 
-  height: auto;   
+  max-width: 90%;
+  height: auto;
   border-radius: 20px;
   margin-bottom: 20px;
 }
 
-.buttonsUpdateDelete{
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: center;
-gap: 1rem;
-margin-bottom: 40px;
+.buttonsUpdateDelete {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 40px;
 }
 
 .buttonsUd {
-  width: 150px; 
+  width: 150px;
   margin-top: 10px;
   background: linear-gradient(90deg, #00d2ff, #3a7bd5);
   color: white;
@@ -519,9 +496,9 @@ margin-bottom: 40px;
   border-radius: 20px;
   cursor: pointer;
   font-size: 16px;
-  font-family: 'Verdana', sans-serif;
+  font-family: "Verdana", sans-serif;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease-in-out ;
+  transition: background-color 0.3s ease-in-out;
 }
 
 /*-------------About------------*/
@@ -535,23 +512,47 @@ margin-bottom: 40px;
 }
 
 .container-about::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: url(./assets/about.jpg);
+  background: url(./assets/aboutMobile.png);
   background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-opacity: 0.5;
-  z-index: -1; 
-  border: 3px solid white;
-
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  z-index: -1;
+  border: 2px solid white;
 }
 
+.informationH2 {
+  margin-top: 100px;
+  margin-bottom: 60px;
+  text-transform: none;
+  color: #00438f;
+  font-weight: lighter;
+  font-style: italic;
+  text-shadow: 0 0 10px rgba(49, 92, 184, 0.6), 0 0 20px rgba(0, 71, 255, 0.4);
+  font-size: 30px;
+}
 
+.iconsMalu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 120px;
+}
+
+.iconsSam {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 60px;
+}
 
 /*Design tablet
 
@@ -596,7 +597,3 @@ opacity: 0.5;
     width: 100%;
   }
 }*/
-
-
-
-
