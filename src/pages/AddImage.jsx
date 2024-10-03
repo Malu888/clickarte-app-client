@@ -48,7 +48,7 @@ function AddImage() {
         </Link>
       </div>
       <div className="form">
-      <h1>Add a new Image</h1>
+      <h1>Add a new image</h1>
         <form className="addImageForm" onSubmit={handleImageSubmit}>
           <label className="label">Title:</label>
           <input

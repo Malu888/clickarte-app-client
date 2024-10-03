@@ -121,7 +121,7 @@ setImage(e.target.value) // + values?
            <button className='buttonsUd' onClick={() => setIsShowingDeleteCheck(true)}> Delete</button>
 
            {isShowingDeleteCheck && (
-         <div>
+         <div className="confirmation-delete">
           <p>Are you sure you want to delete this image?</p>
           <button className='buttonsUd' onClick={deleteImage}>Si</button>
           <button className='buttonsUd' onClick={() => setIsShowingDeleteCheck(false)}>No</button>

@@ -10,33 +10,33 @@ import { useContext } from "react";
 import { DataContext } from "../context/Data.context.jsx";
 import { RingLoader } from "react-spinners";
 
-
 function Home() {
-
-  const { allData } = useContext(DataContext)
+  const { allData } = useContext(DataContext);
   const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
- 
-
 
   useEffect(() => {
     if (allData) {
-      const uniqueCategories = Array.from(new Set(allData.map(item => item.categoria)));
+      const uniqueCategories = Array.from(
+        new Set(allData.map((item) => item.categoria))
+      );
       setCategories(uniqueCategories);
 
       if (selectedCategory) {
-        const filtered = allData.filter(item => item.categoria === selectedCategory);
+        const filtered = allData.filter(
+          (item) => item.categoria === selectedCategory
+        );
         setFilteredResults(filtered);
       } else {
-        setFilteredResults(allData); 
+        setFilteredResults(allData);
+      }
     }
-  }
   }, [allData, selectedCategory]);
 
   const handleCategorySelected = (category) => {
-    setSelectedCategory(category)
-  }
+    setSelectedCategory(category);
+  };
 
   if (allData === null) {
     return (
@@ -46,19 +46,20 @@ function Home() {
     );
   }
 
-
-
- 
-
   return (
     <>
-      <Navbar categories={categories} onSelectedCategory={handleCategorySelected}/>
-      <Link to="/addimage/:addimageId" style={{textDecoration: 'none'}}>
-        <button className="addImage">Add your image</button>
-      </Link>
-      <Link to={'/about'} style={{textDecoration: 'none'}}>
-      <button className="addImage">About</button>
-      </Link>
+      <Navbar
+        categories={categories}
+        onSelectedCategory={handleCategorySelected}
+      />
+      <div className="container-addImage-about">
+        <Link to="/addimage/:addimageId" style={{ textDecoration: "none" }}>
+          <button className="addImage">Add your image</button>
+        </Link>
+        <Link to={"/about"} style={{ textDecoration: "none" }}>
+          <button className="about">About</button>
+        </Link>
+      </div>
       <div className="carousel">
         <Carousel>
           <Carousel.Item>
@@ -70,22 +71,14 @@ function Home() {
           </Carousel.Item>
 
           <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src={img3}
-              alt="Terceira Imagem"
-            />
+            <img className="d-block w-100" src={img3} alt="Terceira Imagem" />
           </Carousel.Item>
           <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src={img4}
-              alt="Quarta Imagem"
-            />
+            <img className="d-block w-100" src={img4} alt="Quarta Imagem" />
           </Carousel.Item>
         </Carousel>
       </div>
-      <div>
+      <div className="pictures-large">
         {filteredResults.length > 0 ? (
           filteredResults.map((eachElement, i) => (
             <div key={i} className="pictures">
