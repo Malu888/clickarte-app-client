@@ -1,10 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Navbar from "../components/Navbar";
 import { RingLoader } from "react-spinners";
 import { useContext } from "react";
 import { DataContext } from "../context/Data.context.jsx"
+import logo1 from "../assets/logo.png";
+
 
 
 function Details() {
@@ -100,27 +101,38 @@ function Details() {
 
   return (
     <>
-      <Navbar />
+     <div>
+      <Link to='/'>
+        <img className='logoClickArte' src={logo1}></img>
+        </Link>
+      </div>
+      <div>
+        <h1 className="detailsH1">Details Page</h1>
+        </div>
 
       <div className="detailsImg">
-        <p>Details Page</p>
+      
         <img
           src={imgInformation.img}
           alt={`imagen ${imgInformation.id}`}
+          
         />
-        <p>Categoria:{imgInformation.categoria}</p>
-        <p>Location: {imgInformation.location}</p>
+        <div className="container-p">
+        <p className="description"><b>Category:</b>{imgInformation.categoria}</p>
+         <p className="description"><b> Location:</b> {imgInformation.location}</p> 
+         </div>      
         <Link to={`/details/edit/${detailsId}`}>
-          <button>Edit image</button>
+          <button className="butonDeidit">Edit image</button>
         </Link>
-      </div>
+      
 
-      <div>
+      <div className="addComment-container">
         {comment?.length > 0 ? (
           comment.map(
             (eachComment) =>
               imgInformation.id === eachComment.imagenId && (
-                <div key={eachComment.id}>
+                <div className="comentarios" key={eachComment.id}>
+                  <h2>Comments</h2>
                   <p>
                     <b>Author:</b>
                     {eachComment.autor}
@@ -133,7 +145,7 @@ function Details() {
                     <b>Rating:</b>
                     {eachComment.rating}
                   </p>
-                  <button onClick={() => handleDelete(eachComment.id)}>
+                  <button className="butonDeidit"onClick={() => handleDelete(eachComment.id)}>
                     Delete Comment
                   </button>
                 </div>
@@ -143,10 +155,11 @@ function Details() {
           <p>Add new comment</p>
         )}
 
-        <div className="addComment">
+        <div className="addComment-form">
           <form onSubmit={handleSubmit}>
             <label>Name:</label>
             <input
+             className="addcomentarioInput"
               type="text"
               name="name"
               placeholder="Name"
@@ -155,6 +168,7 @@ function Details() {
             ></input>
             <label>Description:</label>
             <input
+             className="addcomentarioInput"
               type="text"
               description="description"
               placeholder="Comment here"
@@ -163,6 +177,7 @@ function Details() {
             ></input>
             <label>Rating:</label>
             <input
+            className="addcomentarioInput"
               type="number"
               rating="rating"
               placeholder="0"
@@ -172,10 +187,10 @@ function Details() {
               max={5}
             ></input>
 
-            <button type="submit">Send</button>
+            <button className="buttonEnviar" type="submit">Send</button>
           </form>
         </div>
-        <Link to={"/"}>Back</Link>
+      </div>
       </div>
     </>
   );

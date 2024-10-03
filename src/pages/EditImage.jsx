@@ -78,28 +78,30 @@ setImage(e.target.value) // + values?
      <Link to='/'>
         <img className='logoClickArte' src={logo1}></img>
         </Link>
-            <div className="edicontainer">Edit Image</div>
+            <h1 className="editImgH1">Edit Image</h1>
             <form onSubmit={handleSubmit}>
-                <div className="edigroup">
-                    <label htmlFor="description">Description:</label>
+                <div className="editForm">
+                    <label className="labelPreview">Description:</label>
                     <input
                         type="text"
                         id="description"
+                        placeholder='Add a description'
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </div>
-                <div className="edigroup">
-                    <label>Image:</label>
+                <div className="editForm">
+                    <label className="labelPreview">Image:</label>
                     <input
                         type="text"
                         id="image"
+                        placeholder='Add Url'
                         onChange={handleNewImage}
                     />
                 </div>
 
-                <div className="edigruop">
-                    <label>Category:</label>
+                <div className="editForm">
+                    <label className="labelPreview">Category:</label>
                     <input
                         type="text"
                         id="categoria"
@@ -108,24 +110,25 @@ setImage(e.target.value) // + values?
                     />
                 </div>
                
-                    <div className="edipreview">
+                    <div className="editpreview">
                         <h3>Preview:</h3>
-                        <img src={image} alt={description} style={{ width: '200px', height: 'auto' }} />
+                        <img src={image} alt={description}/>
                     </div>
-                    
+                    </form>
+               <div className="buttonsUpdateDelete">
+                <button className='buttonsUd' type="submit">Update</button>
             
-                <button type="submit">Update Image</button>
-            </form>
-           <button onClick={() => setIsShowingDeleteCheck(true)}> Delete Image</button>
+           <button className='buttonsUd' onClick={() => setIsShowingDeleteCheck(true)}> Delete</button>
 
            {isShowingDeleteCheck && (
          <div>
           <p>Are you sure you want to delete this image?</p>
-          <button onClick={deleteImage}>Si</button>
-          <button onClick={() => setIsShowingDeleteCheck(false)}>No</button>
-         
+          <button className='buttonsUd' onClick={deleteImage}>Si</button>
+          <button className='buttonsUd' onClick={() => setIsShowingDeleteCheck(false)}>No</button>
+        
         </div>
       )}
+       </div>
     </>
   )
 }

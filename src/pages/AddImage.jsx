@@ -50,7 +50,7 @@ function AddImage() {
       <div className="form">
       <h1>Add a new Image</h1>
         <form className="addImageForm" onSubmit={handleImageSubmit}>
-          <label>Title:</label>
+          <label className="label">Title:</label>
           <input
           className="addformInput"
             type="text"
@@ -59,7 +59,7 @@ function AddImage() {
             value={title}
             onChange={handleTitleValue}
           ></input>
-          <label>Description:</label>
+          <label className="label">Description:</label>
           <input
            className="addformInput"
             type="text"
@@ -69,10 +69,10 @@ function AddImage() {
             onChange={handleDescriptionValue}
           ></input>
          
-          <label>Image:</label>
+          <label  className="label">Image:</label>
           <input  className="addformInput" type="text" placeholder='Url' onChange={handleImageValue}></input>
           
-          <label>Category:</label>
+          <label  className="label">Category:</label>
           <input  className="addformInput" type="text" onChange={handleCategoriaValue} placeholder="Add Categoria"></input>
           <button className="buttonSend" type="submit">Send</button>
         </form>

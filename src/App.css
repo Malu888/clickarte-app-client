@@ -1,37 +1,11 @@
 
 
 #root {
-  max-width: 1280px;
-  max-height: 100%;
+
   margin: 0 auto;
   text-align: center;
   background-color: rgb(237, 238, 248);
- 
-}
-
-
-/*EditarImagenFormulario*/
-
-/*.edicontainer{
-
-  width: 150px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #5D7CF5;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-
-}*/
-
-.edigroup{
-  margin-bottom: 15px;
-}
-.edigroup input{
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px
+  width: 100vw;
 }
 
 
@@ -129,26 +103,7 @@ gap: 10px;
   border-radius: 10px;
 }
 
-.detailsImg {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  
-}
 
-.addComment {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.addComment input {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  justify-content: space-between;
-}
 
 /*.carousel {
   margin: 20px 10px 20px 10px;
@@ -248,11 +203,16 @@ margin: auto;
 display: flex;
 flex-direction: column;
 
+
 }
 
 .addImageForm {
   width: 80%;
   margin: auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+/*margin-bottom: ;*/
 }
 
 .addformInput {
@@ -264,7 +224,7 @@ flex-direction: column;
   border-radius: 10px;
   border: 2px solid white;
  margin-bottom: 5px;
- color: #00438f;
+ color: #00438f
 }
 
 .form h1 {
@@ -278,12 +238,12 @@ flex-direction: column;
   font-size: 30px;
 }
 
-.form label {
+.label {
   color: #00438f;
   font-weight: lighter;
   font-style: italic;
   text-shadow: 1px 3px 10px  #5D7CF5;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .buttonSend {
@@ -305,8 +265,337 @@ flex-direction: column;
   
 }
 
+.loading {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100vh;
+  max-height: 100vh;
+  margin-top: 20px;
+}
 
-/*Design tablet*/
+/*Samuel*/
+
+
+/*Detralles iamgenes Samuel trabajando aqui*/
+
+/* Contenedor principal de imágenes y comentarios */
+.detailsImg {
+  margin-bottom: 20px; 
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 100%; 
+  max-width: 600px; 
+  border-radius: 10px;
+  background-color: rgb(237, 238, 248);
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  box-sizing: border-box; 
+}
+
+.detailsH1 {
+  margin-top: 20px;
+  text-transform: none;
+  color: #00438f;
+  font-weight: lighter;
+  font-style: italic;
+  text-shadow: 0 0 10px rgba(49, 92, 184, 0.6), 0 0 20px rgba(0, 71, 255, 0.4);
+  font-size: 30px;
+}
+
+.container-p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 2px;
+}
+
+.description {
+  font-size: 14px;
+  margin-left: auto;
+  max-width: 100vh;
+  width: 25vh;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(93, 124, 245, 0.5);
+  background-color: rgba(93, 124, 245, 0.1);
+  border: 1px solid #5D7CF5;
+  color: #5D7CF5;
+  transition: background-color 0.3s, color 0.3s;
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1rem;
+}
+
+/* Estilo para las imágenes dentro de detailsImg */
+.detailsImg img {
+  max-width: 100%; 
+  height: auto;   
+  border-radius: 20px;
+}
+
+.comentarios h2 {
+  margin-top: 20px;
+  text-transform: none;
+  color: #00438f;
+  font-weight: lighter;
+  font-style: italic;
+  text-shadow: 0 0 10px rgba(49, 92, 184, 0.6), 0 0 20px rgba(0, 71, 255, 0.4);
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.comentarios p{
+  border: 1px solid #5D7CF5;
+  color: #00438f;
+  border-radius: 20px;
+
+}
+
+/* Botón de edición */
+.butonDeidit {
+  width: 150px; 
+  margin-top: 10px;
+  background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Verdana', sans-serif;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+
+.addcomentarioInput{
+  width: 100%; 
+  max-width: 250px; 
+  margin: 10px 0;
+ padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0px 4px 6px  #00438f;
+  font-size: 14px;
+  font-family: 'Verdana', sans-serif;
+  text-align: center;
+}
+
+
+/* Estilo para las etiquetas */
+label {
+  font-size: 13px;
+  color: #00438f;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-family: 'Verdana', sans-serif;
+}
+
+/* Botón de envío */
+.buttonEnviar {
+  width: 150px; 
+  margin-top: 10px;
+  background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Verdana', sans-serif;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out ;
+}
+
+/* Contenedor de comentarios */
+.addComment-form {
+  background-color: rgb(237, 238, 248);
+  padding: 30px;
+  border-radius: 20px;
+  margin-top: 20px;
+  width: 100%; 
+  max-width: 300px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  text-align: center;
+}
+
+/*EditarImagenFormulario*/
+.editImgH1 {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  text-transform: none;
+  color: #00438f;
+  font-weight: lighter;
+  font-style: italic;
+  text-shadow: 0 0 10px rgba(49, 92, 184, 0.6), 0 0 20px rgba(0, 71, 255, 0.4);
+  font-size: 30px;
+}
+/*formulario*/
+.editForm{
+  background-color: rgb(237, 238, 248);
+  border-radius: 20px;
+  margin-top: 20px;
+  width: 100%; 
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  text-align: center;
+}
+.editForm input{
+  width: 100%; 
+  max-width: 250px; 
+  margin: 10px 0;
+ padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: 0px 4px 6px  #00438f;
+  font-size: 14px;
+  font-family: 'Verdana', sans-serif;
+  text-align: center;
+}
+
+.labelPreview {
+  text-transform: none;
+  color: #00438f;
+  font-weight: lighter;
+  font-style: italic;
+  text-shadow: 0 0 10px rgba(49, 92, 184, 0.6), 0 0 20px rgba(0, 71, 255, 0.4);
+  font-size: 1rem;
+  text-align: center;
+  margin: auto;
+}
+
+.editpreview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.editpreview h3 {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  text-transform: none;
+  color: #00438f;
+  font-weight: lighter;
+  font-style: italic;
+  text-shadow: 0 0 10px rgba(49, 92, 184, 0.6), 0 0 20px rgba(0, 71, 255, 0.4);
+  font-size: 30px;
+}
+
+.editpreview img {
+  max-width: 90%; 
+  height: auto;   
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.buttonsUpdateDelete{
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+gap: 1rem;
+margin-bottom: 40px;
+}
+
+.buttonsUd {
+  width: 150px; 
+  margin-top: 10px;
+  background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Verdana', sans-serif;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease-in-out ;
+}
+
+/*-------------About------------*/
+
+.container-about {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  border: 5px solid white;
+  z-index: 1;
+}
+
+.container-about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(./assets/about.jpg);
+  background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+opacity: 0.5;
+  z-index: -1; 
+  border: 3px solid white;
+
+}
+
+
+
+/*Design tablet
+
+@media (min-width: 1024px) {
+  Estilos para desktops e telas maiores 
+  #root {
+    padding: 50px; 
+  }
+
+  .navBar {
+    justify-content: space-around; 
+  }
+
+  .logoClickArte{
+    max-width: 300px;
+    height: 150px;
+    text-align: left;
+  }
+
+
+  .addImage {
+    padding: 15px;
+    font-size: 16px; 
+    width: 40%; 
+  }
+
+  .nav-item {
+    padding: 15px 20px; 
+    font-size: 18px; 
+  }
+
+  .scrollable-menu {
+    max-height: 400px; 
+  }
+
+  .pictures {
+    flex-direction: row; 
+    justify-content: space-around; 
+  }
+
+  .pictures img {
+    width: 100%;
+  }
+}*/
 
 
 

@@ -40,10 +40,8 @@ function Home() {
 
   if (allData === null) {
     return (
-      <div
-        style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
-      >
-        <RingLoader color="#5D7CF5" />
+      <div className="loading">
+        <RingLoader />
       </div>
     );
   }
