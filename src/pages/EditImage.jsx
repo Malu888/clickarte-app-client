@@ -106,39 +106,32 @@ function EditImage() {
 
         <div className="editpreview">
           <h3>Preview:</h3>
-          <img src={image} alt={description} />
+          <img src={image} alt={description || "Image preview"} />
+        </div>
+        <div className="buttonsUpdateDelete">
+          <button className="buttonsUd" type="submit">Update</button>
+          <button
+            className="buttonsUd"
+            onClick={() => setIsShowingDeleteCheck(true)}
+            type="button" 
+          >
+            Delete
+          </button>
+          {isShowingDeleteCheck && (
+            <div className="confirmation-delete">
+              <p>Are you sure you want to delete this image?</p>
+              <button className="buttonsUd" onClick={deleteImage}>Yes</button>
+              <button
+                className="buttonsUd"
+                onClick={() => setIsShowingDeleteCheck(false)}
+              >
+                No
+              </button>
+            </div>
+          )}
         </div>
       </form>
-      <div className="buttonsUpdateDelete">
-        <button className="buttonsUd" type="submit">
-          Update
-        </button>
-
-        <button
-          className="buttonsUd"
-          onClick={() => setIsShowingDeleteCheck(true)}
-        >
-          {" "}
-          Delete
-        </button>
-
-        {isShowingDeleteCheck && (
-          <div className="confirmation-delete">
-            <p>Are you sure you want to delete this image?</p>
-            <button className="buttonsUd" onClick={deleteImage}>
-              Si
-            </button>
-            <button
-              className="buttonsUd"
-              onClick={() => setIsShowingDeleteCheck(false)}
-            >
-              No
-            </button>
-          </div>
-        )}
-      </div>
     </>
   );
 }
-
 export default EditImage;
