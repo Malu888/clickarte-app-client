@@ -3,13 +3,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { RingLoader } from "react-spinners";
 import { useContext } from "react";
-import { DataContext } from "../context/Data.context.jsx"
+import { DataContext } from "../context/Data.context.jsx";
 import logo1 from "../assets/logo.png";
 
-
-
 function Details() {
-  const { allData } = useContext(DataContext)
+  const { allData } = useContext(DataContext);
   const [comment, setComment] = useState(null);
   const [commentNameValue, setCommentNameValue] = useState("");
   const [commentDescriptionValue, setCommentDescriptionValue] = useState("");
@@ -56,7 +54,7 @@ function Details() {
       const response = await axios.get(
         `${import.meta.env.VITE_SERVER_URL}/comentarios`
       );
-      
+
       setComment(response.data);
     } catch (error) {
       console.log(error);
@@ -101,96 +99,95 @@ function Details() {
 
   return (
     <>
-     <div>
-      <Link to='/'>
-        <img className='logoClickArte' src={logo1}></img>
+      <div>
+        <Link to="/">
+          <img className="logoClickArte" src={logo1}></img>
         </Link>
       </div>
       <div>
         <h1 className="detailsH1">Details Page</h1>
-        </div>
+      </div>
 
       <div className="detailsImg">
-      
-        <img
-          src={imgInformation.img}
-          alt={`imagen ${imgInformation.id}`}
-          
-        />
+        <img src={imgInformation.img} alt={`imagen ${imgInformation.id}`} />
         <div className="container-p">
-        <p className="description">{imgInformation.categoria}</p>
-         <p className="description"> {imgInformation.location}</p> 
-         </div>      
+          <p className="description">{imgInformation.categoria}</p>
+          <p className="description"> {imgInformation.location}</p>
+        </div>
         <Link to={`/details/edit/${detailsId}`}>
           <button className="butonDeidit">Edit image</button>
         </Link>
-      
 
-      <div className="addComment-container">
-        {comment?.length > 0 ? (
-          comment.map(
-            (eachComment) =>
-              imgInformation.id === eachComment.imagenId && (
-                <div className="comentarios" key={eachComment.id}>
-                  <h2>Comments</h2>
-                  <p>
-                    <b>Author:</b>
-                    {eachComment.autor}
-                  </p>
-                  <p>
-                    <b>Content:</b>
-                    {eachComment.contenido}
-                  </p>
-                  <p>
-                    <b>Rating:</b>
-                    {eachComment.rating}
-                  </p>
-                  <button className="butonDeidit"onClick={() => handleDelete(eachComment.id)}>
-                    Delete Comment
-                  </button>
-                </div>
-              )
-          )
-        ) : (
-          <p>Add new comment</p>
-        )}
+        <div className="addComment-container">
+          {comment?.length > 0 ? (
+            comment.map(
+              (eachComment) =>
+                imgInformation.id === eachComment.imagenId && (
+                  <div className="comentarios" key={eachComment.id}>
+                    <h2>Comments</h2>
+                    <p>
+                      <b>Author:</b>
+                      {eachComment.autor}
+                    </p>
+                    <p>
+                      <b>Content:</b>
+                      {eachComment.contenido}
+                    </p>
+                    <p>
+                      <b>Rating:</b>
+                      {eachComment.rating}
+                    </p>
+                    <button
+                      className="butonDeidit"
+                      onClick={() => handleDelete(eachComment.id)}
+                    >
+                      Delete Comment
+                    </button>
+                  </div>
+                )
+            )
+          ) : (
+            <p>Add new comment</p>
+          )}
 
-        <div className="addComment-form">
-          <form onSubmit={handleSubmit}>
-            <label>Name:</label>
-            <input
-             className="addcomentarioInput"
-              type="text"
-              name="name"
-              placeholder="Name"
-              value={commentNameValue}
-              onChange={handleNameValue}
-            ></input>
-            <label>Description:</label>
-            <input
-             className="addcomentarioInput"
-              type="text"
-              description="description"
-              placeholder="Comment here"
-              value={commentDescriptionValue}
-              onChange={handleDescriptionValue}
-            ></input>
-            <label>Rating:</label>
-            <input
-            className="addcomentarioInput"
-              type="number"
-              rating="rating"
-              placeholder="0"
-              value={commentRatingValue}
-              onChange={handleRatingValue}
-              min={1}
-              max={5}
-            ></input>
+          <div className="addComment-form">
+            <form onSubmit={handleSubmit}>
+              <label>Name:</label>
+              <input
+                className="addcomentarioInput"
+                type="text"
+                name="name"
+                placeholder="Name"
+                value={commentNameValue}
+                onChange={handleNameValue}
+              ></input>
+              <label>Description:</label>
+              <input
+                className="addcomentarioInput"
+                type="text"
+                description="description"
+                placeholder="Comment here"
+                value={commentDescriptionValue}
+                onChange={handleDescriptionValue}
+              ></input>
+              <label>Rating:</label>
+              <input
+                className="addcomentarioInput"
+                type="number"
+                rating="rating"
+                placeholder="0"
+                value={commentRatingValue}
+                onChange={handleRatingValue}
+                min={1}
+                max={5}
+              ></input>
 
-            <button className="buttonEnviar" type="submit">Send</button>
-          </form>
+              <button className="buttonEnviar" type="submit">
+                Send
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
       </div>
     </>
   );
